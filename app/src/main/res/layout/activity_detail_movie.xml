@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/bg_main"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/bg_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_speed="1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/favorite"
+        android:src="@drawable/ic_favorite_empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/black" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/detail_movie_backdrop"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/backdrop"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="190dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/detail_movie_backdrop">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_poster"
+                    android:layout_width="150dp"
+                    android:layout_height="225dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/detail_movie_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/poster"
+                        android:scaleType="fitXY"
+                        tools:src="@drawable/poster_bohemian" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/detail_movie_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cv_poster"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Bohemian Rhapsody Bohemian Rhapsody Bohemian Rhapsody (2018)" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@style/CircularDeterminateProgressBar"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/circle"
+                    app:layout_constraintStart_toEndOf="@id/cv_poster"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_title"
+                    tools:progress="10" />
+
+                <TextView
+                    android:id="@+id/detail_movie_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/progress_bar"
+                    app:layout_constraintEnd_toEndOf="@id/progress_bar"
+                    app:layout_constraintStart_toStartOf="@id/progress_bar"
+                    app:layout_constraintTop_toTopOf="@id/progress_bar"
+                    tools:text="100%" />
+
+                <TextView
+                    android:id="@+id/detail_movie_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@+id/detail_movie_duration"
+                    app:layout_constraintStart_toEndOf="@+id/progress_bar"
+                    app:layout_constraintTop_toTopOf="@id/progress_bar"
+                    tools:text="November 21, 2019" />
+
+                <TextView
+                    android:id="@+id/detail_movie_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@android:color/darker_gray"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+                    app:layout_constraintStart_toEndOf="@id/progress_bar"
+                    app:layout_constraintTop_toBottomOf="@id/detail_movie_date"
+                    tools:text="Duration: 1h 32m" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/detail_movie_tag_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/darker_gray"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_head"
+                tools:text="Heroes Never Die" />
+
+            <TextView
+                android:id="@+id/tv_overview"
+                style="@style/headDetail"
+                android:text="@string/overview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_tag_line" />
+
+            <ru.embersoft.expandabletextview.ExpandableTextView
+                android:id="@+id/detail_movie_overview"
+                style="@style/contentDetail"
+                app:etv_animationTime="20"
+                app:etv_expandLines="4"
+                app:etv_showLine="false"
+                app:etv_textContentSize="14sp"
+                app:etv_textExpand="More..."
+                app:etv_textShrink="Less"
+                app:etv_textStateColor="@color/orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_overview"
+                tools:text="@tools:sample/lorem/random" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/detail_movie_overview"-->
+            <!--                style="@style/contentDetail"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tv_overview"-->
+            <!--                tools:text="@tools:sample/lorem" />-->
+
+            <TextView
+                android:id="@+id/tv_more_info"
+                style="@style/headDetail"
+                android:layout_marginTop="16dp"
+                android:text="@string/more_information"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_overview" />
+
+            <TextView
+                android:id="@+id/tv_original_title"
+                style="@style/headDetail"
+                android:text="@string/original_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_more_info" />
+
+            <TextView
+                android:id="@+id/detail_movie_original_title"
+                style="@style/contentDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_original_title"
+                tools:text="Bohemian Rhapsody" />
+
+            <TextView
+                android:id="@+id/tv_language"
+                style="@style/headDetail"
+                android:text="@string/language"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_original_title" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/detail_movie_language"-->
+            <!--                style="@style/contentDetail"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tv_language"-->
+            <!--                tools:text="English" />-->
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/detail_movie_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_language"
+                app:selectionRequired="false"
+                app:singleSelection="false" />
+
+            <TextView
+                android:id="@+id/tv_genre"
+                style="@style/headDetail"
+                android:text="@string/genre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_language" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/detail_movie_genre"-->
+            <!--                style="@style/contentDetail"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tv_genre"-->
+            <!--                tools:text="Music" />-->
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/detail_movie_genre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_genre"
+                app:selectionRequired="false"
+                app:singleSelection="false" />
+
+            <TextView
+                android:id="@+id/tv_budget"
+                style="@style/headDetail"
+                android:text="@string/budget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre" />
+
+            <TextView
+                android:id="@+id/detail_movie_budget"
+                style="@style/contentDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_budget"
+                tools:text="10000" />
+
+            <TextView
+                android:id="@+id/tv_revenue"
+                style="@style/headDetail"
+                android:text="@string/revenue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_budget" />
+
+            <TextView
+                android:id="@+id/detail_movie_revenue"
+                style="@style/contentDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_revenue"
+                tools:text="20000" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/headDetail"
+                android:text="@string/status"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_revenue" />
+
+            <TextView
+                android:id="@+id/detail_movie_status"
+                style="@style/contentDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_status"
+                tools:text="Released" />
+
+            <TextView
+                android:id="@+id/tv_homepage"
+                style="@style/headDetail"
+                android:text="@string/home_page"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_status" />
+
+            <TextView
+                android:id="@+id/detail_movie_homepage"
+                style="@style/contentDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_homepage"
+                tools:text="https://www.google.com" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+{
+  "backdrop_path": "/mZjZgY6ObiKtVuKVDrnS9VnuNlE.jpg",
+  "episode_run_time": [
+    43
+  ],
+  "first_air_date": "2017-09-25",
+  "genres": [
+    {
+      "id": 18,
+      "name": "Drama"
+    }
+  ],
+  "homepage": "http://abc.go.com/shows/the-good-doctor",
+  "id": 71712,
+  "last_air_date": "2021-04-19",
+  "name": "The Good Doctor",
+  "number_of_seasons": 4,
+  "original_name": "The Good Doctor",
+  "overview": "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
+  "poster_path": "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "His mind is a mystery, his methods are a miracle.",
+  "type": "Scripted",
+  "vote_average": 8.6
+}

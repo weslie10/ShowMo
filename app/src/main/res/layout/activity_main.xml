@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".ui.main.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/host_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_navigation_bg"
+        android:elevation="4dp"
+        android:padding="12dp"
+        app:bnc_mode="spread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/host_frame">
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/btn_home_menu"
+            style="@style/bubble_navigation"
+            app:bt_active="true"
+            app:bt_icon="@drawable/ic_home"
+            app:bt_title="Home"
+            app:layout_constraintEnd_toStartOf="@id/btn_favorite_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bottom_navigation" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/btn_favorite_menu"
+            style="@style/bubble_navigation"
+            app:bt_icon="@drawable/ic_favorite_fill"
+            app:bt_title="Favorite"
+            app:layout_constraintEnd_toStartOf="@id/btn_about_menu"
+            app:layout_constraintStart_toEndOf="@id/btn_home_menu"
+            app:layout_constraintTop_toTopOf="@id/bottom_navigation" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/btn_about_menu"
+            style="@style/bubble_navigation"
+            app:bt_icon="@drawable/ic_person"
+            app:bt_title="About"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_favorite_menu"
+            app:layout_constraintTop_toTopOf="@id/bottom_navigation" />
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+</androidx.constraintlayout.widget.ConstraintLayout>
