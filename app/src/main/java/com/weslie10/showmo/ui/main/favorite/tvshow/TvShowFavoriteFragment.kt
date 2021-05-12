@@ -43,10 +43,10 @@ class TvShowFavoriteFragment : Fragment(), TvShowCallback {
 
             viewModel.getFavorite().observe(viewLifecycleOwner, { tvShow ->
                 if (tvShow.isNotEmpty()) {
-                    binding.notFound.notFound(false)
+                    binding.tvshowNotFound.notFound(false)
                     tvShowAdapter.submitList(tvShow)
                     tvShowAdapter.notifyDataSetChanged()
-                } else binding.notFound.notFound(true)
+                } else binding.tvshowNotFound.notFound(true)
             })
             with(binding.rvTvShows) {
                 this.layoutManager = LinearLayoutManager(context)

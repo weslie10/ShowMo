@@ -44,11 +44,11 @@ class MovieFavoriteFragment : Fragment(), MovieCallback {
 
             viewModel.getFavorite().observe(viewLifecycleOwner, { movie ->
                 if (movie.isNotEmpty()) {
-                    binding.notFound.notFound(false)
+                    binding.movieNotFound.notFound(false)
                     movieAdapter.submitList(movie)
                     movieAdapter.notifyDataSetChanged()
 
-                } else binding.notFound.notFound(true)
+                } else binding.movieNotFound.notFound(true)
 
             })
             with(binding.rvMovies) {

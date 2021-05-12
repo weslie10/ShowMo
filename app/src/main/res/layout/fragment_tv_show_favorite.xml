@@ -20,7 +20,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/not_found"
+        android:id="@+id/tvshow_not_found"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_main"

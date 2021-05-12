@@ -54,11 +54,19 @@
 - Menampilkan data favorite movie
     - Memberikan tindakan klik pada Tombol Favorite di Bottom Navigation
     - Memastikan rv_movies dalam keadaan tampil
+	- Memberikan tindakan klik pada data pertama di rv_movies
+	- Memberikan tindakan klik pada tombol favorite
+	- Memberikan tindakan klik untuk kembali ke halaman sebelumnya
+	- Memastikan Layout untuk movie_not_found tampil sesuai dengan yang diharapkan
 
 - Menampilkan data favorite tv shows
     - Memberikan tindakan klik pada Tombol Favorite di Bottom Navigation
     - Memberikan tindakan klik pada Tab layout dengan teks Tv Show
     - Memastikan rv_tv_shows dalam keadaan tampil
+	- Memberikan tindakan klik pada data pertama di rv_tv_shows
+	- Memberikan tindakan klik pada tombol favorite
+	- Memberikan tindakan klik untuk kembali ke halaman sebelumnya
+	- Memastikan Layout untuk tvshow_not_found tampil sesuai dengan yang diharapkan
 
 - Menampilkan Halaman About
     - Memberikan tindakan klik pada Tombol Favorite di Bottom Navigation

@@ -15,7 +15,7 @@ interface ShowMoDataSource {
 
     fun getFavoriteMovie(): LiveData<PagedList<MovieEntity>>
 
-    fun setFavoriteMovie(movie: MovieEntity, state: Boolean)
+    fun setFavoriteMovie(movie: MovieEntity, state: Boolean): Int
 
     fun getPopularTvShow(sort: String): LiveData<Resource<PagedList<TvShowResponseEntity>>>
 
@@ -23,5 +23,5 @@ interface ShowMoDataSource {
 
     fun getFavoriteTvShow(): LiveData<PagedList<TvShowEntity>>
 
-    fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean)
+    fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean): Int
 }

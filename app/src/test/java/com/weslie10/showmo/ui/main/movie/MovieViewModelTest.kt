@@ -24,6 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class MovieViewModelTest {
     private lateinit var viewModel: MovieViewModel
     private val sort = "ALL"
+    private val movie = DataDummy.movie
     private val id = 399566
 
     @get:Rule
@@ -127,5 +128,18 @@ class MovieViewModelTest {
         `when`(repository.getPopularMovie(sort)).thenReturn(movies)
         val listMovies = viewModel.getMovie(sort).value
         assertEquals(dummyMovies.message, listMovies?.message)
+    }
+
+    @Test
+    fun setFavoriteMovie() {
+        // set true favorite
+        `when`(repository.setFavoriteMovie(movie, true)).thenReturn(movie.id)
+        val addFavorite = repository.setFavoriteMovie(movie, true)
+        assertNotNull(addFavorite)
+
+        // set false favorite
+        `when`(repository.setFavoriteMovie(movie, false)).thenReturn(movie.id)
+        val removeFavorite = repository.setFavoriteMovie(movie, false)
+        assertNotNull(removeFavorite)
     }
 }

@@ -3,6 +3,7 @@ package com.weslie10.showmo.ui.main
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeUp
@@ -111,6 +112,15 @@ class MainActivityTest {
         onView(withId(R.id.btn_favorite_menu)).perform(click())
         onView(withId(R.id.rv_movies))
             .check(matches(isDisplayed()))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    0,
+                    click()
+                )
+            )
+        onView(withId(R.id.btn_favorite)).perform(click())
+        pressBack()
+        onView(withId(R.id.movie_not_found)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -119,6 +129,15 @@ class MainActivityTest {
         onView(withText("TV Shows")).perform(click())
         onView(withId(R.id.rv_tv_shows))
             .check(matches(isDisplayed()))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    0,
+                    click()
+                )
+            )
+        onView(withId(R.id.btn_favorite)).perform(click())
+        pressBack()
+        onView(withId(R.id.tvshow_not_found)).check(matches(isDisplayed()))
     }
 
     @Test

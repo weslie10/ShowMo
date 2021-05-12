@@ -54,19 +54,6 @@ class ShowMoRepositoryTest {
     }
 
     @Test
-    fun getTvShowPopular() {
-        val dataSourceFactory =
-            mock(DataSource.Factory::class.java) as DataSource.Factory<Int, TvShowResponseEntity>
-        `when`(local.getTvShow(sort)).thenReturn(dataSourceFactory)
-        showMoRepository.getPopularTvShow(sort)
-
-        val tvShowsEntities = Resource.success(PagedListUtil.mockPagedList(listTvShows.results))
-        verify(local).getTvShow(sort)
-        assertNotNull(tvShowsEntities)
-        assertEquals(listTvShows.results.size, tvShowsEntities.data?.size)
-    }
-
-    @Test
     fun getMovie() {
         val dummyMovie = MutableLiveData<MovieEntity>()
         dummyMovie.value = movie
@@ -92,6 +79,32 @@ class ShowMoRepositoryTest {
         assertEquals(movie.tagline, movieEntities.data?.tagline)
         assertEquals(movie.title, movieEntities.data?.title)
         assertEquals(movie.voteAverage.toString(), movieEntities.data?.voteAverage.toString())
+    }
+
+    @Test
+    fun setFavoriteMovie() {
+        // set true favorite
+        `when`(showMoRepository.setFavoriteMovie(movie, true)).thenReturn(movie.id)
+        val addFavorite = showMoRepository.setFavoriteMovie(movie, true)
+        assertNotNull(addFavorite)
+
+        // set false favorite
+        `when`(showMoRepository.setFavoriteMovie(movie, false)).thenReturn(movie.id)
+        val removeFavorite = showMoRepository.setFavoriteMovie(movie, false)
+        assertNotNull(removeFavorite)
+    }
+
+    @Test
+    fun getTvShowPopular() {
+        val dataSourceFactory =
+            mock(DataSource.Factory::class.java) as DataSource.Factory<Int, TvShowResponseEntity>
+        `when`(local.getTvShow(sort)).thenReturn(dataSourceFactory)
+        showMoRepository.getPopularTvShow(sort)
+
+        val tvShowsEntities = Resource.success(PagedListUtil.mockPagedList(listTvShows.results))
+        verify(local).getTvShow(sort)
+        assertNotNull(tvShowsEntities)
+        assertEquals(listTvShows.results.size, tvShowsEntities.data?.size)
     }
 
     @Test
@@ -121,5 +134,18 @@ class ShowMoRepositoryTest {
         assertEquals(tvShow.type, tvShowEntity.data?.type)
         assertEquals(tvShow.homepage, tvShowEntity.data?.homepage)
         assertEquals(tvShow.status, tvShowEntity.data?.status)
+    }
+
+    @Test
+    fun setFavoriteTvShow() {
+        // set true favorite
+        `when`(showMoRepository.setFavoriteTvShow(tvShow, true)).thenReturn(tvShow.id)
+        val addFavorite = showMoRepository.setFavoriteTvShow(tvShow, true)
+        assertNotNull(addFavorite)
+
+        // set false favorite
+        `when`(showMoRepository.setFavoriteTvShow(tvShow, false)).thenReturn(tvShow.id)
+        val removeFavorite = showMoRepository.setFavoriteTvShow(tvShow, false)
+        assertNotNull(removeFavorite)
     }
 }

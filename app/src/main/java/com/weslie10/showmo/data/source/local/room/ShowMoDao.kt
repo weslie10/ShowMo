@@ -28,7 +28,7 @@ interface ShowMoDao {
     fun insertMovie(movie: MovieEntity)
 
     @Update
-    fun updateMovie(movie: MovieEntity)
+    fun updateMovie(movie: MovieEntity): Int
 
     @Query("SELECT * FROM movie WHERE favorite = 1")
     fun getFavMovies(): DataSource.Factory<Int, MovieEntity>
@@ -50,7 +50,7 @@ interface ShowMoDao {
     fun insertTvShow(tvShow: TvShowEntity)
 
     @Update
-    fun updateTvShow(tvShow: TvShowEntity)
+    fun updateTvShow(tvShow: TvShowEntity): Int
 
     @Query("SELECT * FROM tvShow WHERE favorite = 1")
     fun getFavTvShows(): DataSource.Factory<Int, TvShowEntity>

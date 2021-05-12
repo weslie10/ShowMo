@@ -104,8 +104,10 @@ class ShowMoRepository private constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteMovie(), config).build()
     }
 
-    override fun setFavoriteMovie(movie: MovieEntity, state: Boolean) =
+    override fun setFavoriteMovie(movie: MovieEntity, state: Boolean) : Int {
         appExecutors.diskIO().execute { localDataSource.setFavoriteMovie(movie, state) }
+        return movie.id
+    }
 
     override fun getPopularTvShow(sort: String): LiveData<Resource<PagedList<TvShowResponseEntity>>> {
         return object :
@@ -191,8 +193,10 @@ class ShowMoRepository private constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteTvShow(), config).build()
     }
 
-    override fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean) =
+    override fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean): Int {
         appExecutors.diskIO().execute { localDataSource.setFavoriteTvShow(tvShow, state) }
+        return tvShow.id
+    }
 
     companion object {
         @Volatile

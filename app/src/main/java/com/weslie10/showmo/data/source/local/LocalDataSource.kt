@@ -22,9 +22,10 @@ class LocalDataSource private constructor(private val showMoDao: ShowMoDao) {
 
     fun insertMovie(movie: MovieEntity) = showMoDao.insertMovie(movie)
 
-    fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
+    fun setFavoriteMovie(movie: MovieEntity, newState: Boolean): Int {
         movie.favorite = newState
         showMoDao.updateMovie(movie)
+        return movie.id
     }
 
     fun getFavoriteMovie(): DataSource.Factory<Int, MovieEntity> = showMoDao.getFavMovies()
@@ -41,9 +42,10 @@ class LocalDataSource private constructor(private val showMoDao: ShowMoDao) {
 
     fun insertTvShow(tvShow: TvShowEntity) = showMoDao.insertTvShow(tvShow)
 
-    fun setFavoriteTvShow(tvShow: TvShowEntity, newState: Boolean) {
+    fun setFavoriteTvShow(tvShow: TvShowEntity, newState: Boolean): Int {
         tvShow.favorite = newState
         showMoDao.updateTvShow(tvShow)
+        return tvShow.id
     }
 
     fun getFavoriteTvShow(): DataSource.Factory<Int, TvShowEntity> = showMoDao.getFavTvShows()

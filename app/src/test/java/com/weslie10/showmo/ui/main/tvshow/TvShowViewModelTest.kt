@@ -24,6 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class TvShowViewModelTest {
     private lateinit var viewModel: TvShowViewModel
     private val sort = "ALL"
+    private val tvShow = DataDummy.tvShow
     private val id = 71712
 
     @get:Rule
@@ -126,5 +127,18 @@ class TvShowViewModelTest {
         `when`(repository.getTvShow(id)).thenReturn(tvShow)
         viewModel.getSpecificTvShow().observeForever(observerDetail)
         verify(repository).getTvShow(id)
+    }
+
+    @Test
+    fun setFavoriteTvShow() {
+        // set true favorite
+        `when`(repository.setFavoriteTvShow(tvShow, true)).thenReturn(tvShow.id)
+        val addFavorite = repository.setFavoriteTvShow(tvShow, true)
+        assertNotNull(addFavorite)
+
+        // set false favorite
+        `when`(repository.setFavoriteTvShow(tvShow, false)).thenReturn(tvShow.id)
+        val removeFavorite = repository.setFavoriteTvShow(tvShow, false)
+        assertNotNull(removeFavorite)
     }
 }

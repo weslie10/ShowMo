@@ -104,8 +104,10 @@ class FakeShowMoRepository constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteMovie(), config).build()
     }
 
-    override fun setFavoriteMovie(movie: MovieEntity, state: Boolean) =
-        appExecutors.diskIO().execute { localDataSource.setFavoriteMovie(movie, state) }
+    override fun setFavoriteMovie(movie: MovieEntity, state: Boolean): Int {
+        localDataSource.setFavoriteMovie(movie, state)
+        return movie.id
+    }
 
     override fun getPopularTvShow(sort: String): LiveData<Resource<PagedList<TvShowResponseEntity>>> {
         return object :
@@ -191,6 +193,8 @@ class FakeShowMoRepository constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteTvShow(), config).build()
     }
 
-    override fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean) =
-        appExecutors.diskIO().execute { localDataSource.setFavoriteTvShow(tvShow, state) }
+    override fun setFavoriteTvShow(tvShow: TvShowEntity, state: Boolean): Int {
+        localDataSource.setFavoriteTvShow(tvShow, state)
+        return tvShow.id
+    }
 }
