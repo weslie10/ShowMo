@@ -27,8 +27,8 @@ class TvShowViewModel(private val repository: ShowMoRepository) : ViewModel() {
 
     fun getFavorite(): LiveData<PagedList<TvShowEntity>> = repository.getFavoriteTvShow()
 
-    fun setFavorite(tvShowEntity: TvShowEntity) {
+    fun setFavorite(tvShowEntity: TvShowEntity): Int {
         val newState = !tvShowEntity.favorite
-        repository.setFavoriteTvShow(tvShowEntity, newState)
+        return repository.setFavoriteTvShow(tvShowEntity, newState)
     }
 }

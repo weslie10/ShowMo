@@ -132,14 +132,16 @@ class MovieViewModelTest {
 
     @Test
     fun setFavoriteMovie() {
+        `when`(viewModel.setFavorite(movie)).thenReturn(movie.id)
+
         // set true favorite
-        `when`(repository.setFavoriteMovie(movie, true)).thenReturn(movie.id)
-        val addFavorite = repository.setFavoriteMovie(movie, true)
+        movie.favorite = true
+        val addFavorite = viewModel.setFavorite(movie)
         assertNotNull(addFavorite)
 
         // set false favorite
-        `when`(repository.setFavoriteMovie(movie, false)).thenReturn(movie.id)
-        val removeFavorite = repository.setFavoriteMovie(movie, false)
+        movie.favorite = false
+        val removeFavorite = viewModel.setFavorite(movie)
         assertNotNull(removeFavorite)
     }
 }

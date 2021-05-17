@@ -17,8 +17,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
+import org.mockito.Mockito.*
 
 class ShowMoRepositoryTest {
 
@@ -28,6 +27,7 @@ class ShowMoRepositoryTest {
     private val remote = mock(RemoteDataSource::class.java)
     private val local = mock(LocalDataSource::class.java)
     private val appExecutors = mock(AppExecutors::class.java)
+    private val testExecutors: AppExecutors = AppExecutors(TestExecutor(), TestExecutor())
     private val showMoRepository = FakeShowMoRepository(remote, local, appExecutors)
 
     private val sort = "ALL"
@@ -84,14 +84,16 @@ class ShowMoRepositoryTest {
     @Test
     fun setFavoriteMovie() {
         // set true favorite
-        `when`(showMoRepository.setFavoriteMovie(movie, true)).thenReturn(movie.id)
-        val addFavorite = showMoRepository.setFavoriteMovie(movie, true)
-        assertNotNull(addFavorite)
+        `when`(appExecutors.diskIO()).thenReturn(testExecutors.diskIO())
+
+        doNothing().`when`(local).setFavoriteMovie(movie, true)
+        showMoRepository.setFavoriteMovie(movie, true)
+        verify(local, times(1)).setFavoriteMovie(movie, true)
 
         // set false favorite
-        `when`(showMoRepository.setFavoriteMovie(movie, false)).thenReturn(movie.id)
-        val removeFavorite = showMoRepository.setFavoriteMovie(movie, false)
-        assertNotNull(removeFavorite)
+        doNothing().`when`(local).setFavoriteMovie(movie, false)
+        showMoRepository.setFavoriteMovie(movie, false)
+        verify(local, times(1)).setFavoriteMovie(movie, true)
     }
 
     @Test
@@ -138,14 +140,16 @@ class ShowMoRepositoryTest {
 
     @Test
     fun setFavoriteTvShow() {
+        `when`(appExecutors.diskIO()).thenReturn(testExecutors.diskIO())
+
         // set true favorite
-        `when`(showMoRepository.setFavoriteTvShow(tvShow, true)).thenReturn(tvShow.id)
-        val addFavorite = showMoRepository.setFavoriteTvShow(tvShow, true)
-        assertNotNull(addFavorite)
+        doNothing().`when`(local).setFavoriteTvShow(tvShow, true)
+        showMoRepository.setFavoriteTvShow(tvShow, true)
+        verify(local, times(1)).setFavoriteTvShow(tvShow, true)
 
         // set false favorite
-        `when`(showMoRepository.setFavoriteTvShow(tvShow, false)).thenReturn(tvShow.id)
-        val removeFavorite = showMoRepository.setFavoriteTvShow(tvShow, false)
-        assertNotNull(removeFavorite)
+        doNothing().`when`(local).setFavoriteTvShow(tvShow, false)
+        showMoRepository.setFavoriteTvShow(tvShow, false)
+        verify(local, times(1)).setFavoriteTvShow(tvShow, true)
     }
 }

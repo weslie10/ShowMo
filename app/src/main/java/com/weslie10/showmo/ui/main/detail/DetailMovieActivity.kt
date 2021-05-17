@@ -26,7 +26,7 @@ class DetailMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
     private val viewModelFactory = ViewModelFactory.getInstance(this)
     private val viewModel: MovieViewModel by viewModels { viewModelFactory }
-    private var isShrink = false
+    private var isShrink = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -131,14 +131,16 @@ class TvShowViewModelTest {
 
     @Test
     fun setFavoriteTvShow() {
+        `when`(viewModel.setFavorite(tvShow)).thenReturn(tvShow.id)
+
         // set true favorite
-        `when`(repository.setFavoriteTvShow(tvShow, true)).thenReturn(tvShow.id)
-        val addFavorite = repository.setFavoriteTvShow(tvShow, true)
+        tvShow.favorite = true
+        val addFavorite = viewModel.setFavorite(tvShow)
         assertNotNull(addFavorite)
 
         // set false favorite
-        `when`(repository.setFavoriteTvShow(tvShow, false)).thenReturn(tvShow.id)
-        val removeFavorite = repository.setFavoriteTvShow(tvShow, false)
+        tvShow.favorite = false
+        val removeFavorite = viewModel.setFavorite(tvShow)
         assertNotNull(removeFavorite)
     }
 }
